@@ -7,6 +7,9 @@ import { FaWarehouse } from "react-icons/fa";
 import { MdOutlineCategory } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa6";
 
+import { Link } from "react-router-dom";
+import { getFirstPathFromCurrentUrl } from "../../utils/urlUtils";
+
 export default function Sidebar({ isOpen, toggleSidebar }) {
   return (
     <>
@@ -21,64 +24,104 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
           isOpen ? "translate-x-0 lg:hidden" : "-translate-x-full"
         } lg:translate-x-0 transition-transform duration-300 ease-in-out lg:static lg:inset-0`}
       >
-        <div className="flex items-center justify-center h-14 text-blue-500 bg-white border-y">
+        <div className="flex items-center justify-center h-14 bg-gray-800 text-white border-2 rounded-md shadow-md">
           <h1 className="text-lg font-semibold">Company Name</h1>
         </div>
         <nav className="p-4">
-          <ul>
+          <ul className="flex flex-col space-y-2">
             <li>
-              <div className="flex items-center w-full p-3 rounded-lg text-start text-white hover:bg-blue-500 active:bg-blue-500 outline-none cursor-pointer">
+              <Link
+                className={`flex items-center w-full p-2 rounded-lg text-start text-white hover:bg-blue-500 outline-none cursor-pointer ${
+                  getFirstPathFromCurrentUrl() == "" && "bg-blue-500"
+                }`}
+                to="/"
+              >
                 <MdDashboard className="grid place-items-center mr-4" />
                 Dashboard
-              </div>
+              </Link>
             </li>
             <li>
-              <div className="flex items-center w-full p-3 rounded-lg text-start text-white hover:bg-blue-500 active:bg-blue-500 outline-none cursor-pointer">
+              <Link
+                className={`flex items-center w-full p-2 rounded-lg text-start text-white hover:bg-blue-500 outline-none cursor-pointer ${
+                  getFirstPathFromCurrentUrl() == "billing" && "bg-blue-500"
+                }`}
+                to="/billing"
+              >
                 <RiBillLine className="grid place-items-center mr-4" />
                 Billing
-              </div>
+              </Link>
             </li>
             <li>
-              <div className="flex items-center w-full p-3 rounded-lg text-start text-white hover:bg-blue-500 active:bg-blue-500 outline-none cursor-pointer">
+              <Link
+                className={`flex items-center w-full p-2 rounded-lg text-start text-white hover:bg-blue-500 outline-none cursor-pointer ${
+                  getFirstPathFromCurrentUrl() == "stock" && "bg-blue-500"
+                }`}
+                to="/stock"
+              >
                 <FaWarehouse className="grid place-items-center mr-4" />
                 Stock
-              </div>
+              </Link>
             </li>
             <li>
-              <div className="flex items-center w-full p-3 rounded-lg text-start text-white hover:bg-blue-500 active:bg-blue-500 outline-none cursor-pointer">
+              <Link
+                className={`flex items-center w-full p-2 rounded-lg text-start text-white hover:bg-blue-500 outline-none cursor-pointer ${
+                  getFirstPathFromCurrentUrl() == "product" && "bg-blue-500"
+                }`}
+                to="/product"
+              >
                 <AiOutlineProduct className="grid place-items-center mr-4" />
                 Product
-              </div>
+              </Link>
             </li>
             <li>
-              <div className="flex items-center w-full p-3 rounded-lg text-start text-white hover:bg-blue-500 active:bg-blue-500 outline-none cursor-pointer">
+              <Link
+                className={`flex items-center w-full p-2 rounded-lg text-start text-white hover:bg-blue-500 outline-none cursor-pointer ${
+                  getFirstPathFromCurrentUrl() == "category" && "bg-blue-500"
+                }`}
+                to="/category"
+              >
                 <MdOutlineCategory className="grid place-items-center mr-4" />
                 Category
-              </div>
+              </Link>
             </li>
             <li>
-              <div className="flex items-center w-full p-3 rounded-lg text-start text-white hover:bg-blue-500 active:bg-blue-500 outline-none cursor-pointer">
+              <Link
+                className={`flex items-center w-full p-2 rounded-lg text-start text-white hover:bg-blue-500 outline-none cursor-pointer ${
+                  getFirstPathFromCurrentUrl() == "customer" && "bg-blue-500"
+                }`}
+                to="/customer"
+              >
                 <ImUsers className="grid place-items-center mr-4" />
                 Customer
-              </div>
+              </Link>
             </li>
             <li>
-              <div className="flex items-center w-full p-3 rounded-lg text-start text-white hover:bg-blue-500 active:bg-blue-500 outline-none cursor-pointer">
+              <Link
+                className={`flex items-center w-full p-2 rounded-lg text-start text-white hover:bg-blue-500 outline-none cursor-pointer ${
+                  getFirstPathFromCurrentUrl() == "vendor" && "bg-blue-500"
+                }`}
+                to="/vendor"
+              >
                 <ImUsers className="grid place-items-center mr-4" />
                 Vendor
-              </div>
+              </Link>
             </li>
             <li>
-              <div className="flex items-center w-full p-3 rounded-lg text-start text-white hover:bg-blue-500 active:bg-blue-500 outline-none cursor-pointer">
+              <Link
+                className={`flex items-center w-full p-2 rounded-lg text-start text-white hover:bg-blue-500 outline-none cursor-pointer ${
+                  getFirstPathFromCurrentUrl() == "user" && "bg-blue-500"
+                }`}
+                to="/user"
+              >
                 <FaRegUser className="grid place-items-center mr-4" />
                 User
-              </div>
+              </Link>
             </li>
             <li>
-              <div className="flex items-center w-full p-3 rounded-lg text-start text-white hover:bg-blue-500 active:bg-blue-500 outline-none cursor-pointer">
+              <Link className="flex items-center w-full p-2 rounded-lg text-start text-white hover:bg-blue-500 active:bg-blue-500 outline-none cursor-pointer">
                 <IoIosLogOut className="grid place-items-center mr-4" />
                 Log Out
-              </div>
+              </Link>
             </li>
             {/* Add more links here */}
           </ul>

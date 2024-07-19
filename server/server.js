@@ -1,5 +1,5 @@
 const express = require("express");
-const mongoose = require("mongoose");
+const connectDB = require("./src/config/db");
 const app = express();
 require("dotenv").config();
 
@@ -9,10 +9,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("Database connected successfully"))
-  .catch((err) => console.error("Database connection error : ", err));
+connectDB();
 
 // Import Routes
 const userRoutes = require("./src/routes/users");

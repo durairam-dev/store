@@ -2,7 +2,7 @@ import { useState } from "react";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Form from "../components/vendor/Form";
 
-const Stock = () => {
+const Customers = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleForm = () => {
@@ -11,12 +11,12 @@ const Stock = () => {
   return (
     <DashboardLayout>
       <header className="mb-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Stock List</h1>
+        <h1 className="text-2xl font-bold">Customer List</h1>
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded-md"
           onClick={toggleForm}
         >
-          Add Stock
+          Add Vendor
         </button>
       </header>
 
@@ -25,13 +25,13 @@ const Stock = () => {
           <table className="min-w-full bg-white border">
             <thead className="bg-gray-200">
               <tr>
-                <th className="py-2 px-4 border">Stock Name</th>
+                <th className="py-2 px-4 border">Vendor Name</th>
                 <th className="py-2 px-4 border">Contact</th>
                 <th className="py-2 px-4 border">Email</th>
                 <th className="py-2 px-4 border">Actions</th>
               </tr>
             </thead>
-            <tbody id="Stock-list"></tbody>
+            <tbody id="vendor-list"></tbody>
           </table>
         </div>
       </section>
@@ -40,4 +40,4 @@ const Stock = () => {
   );
 };
 
-export default Stock;
+export default Customers;
