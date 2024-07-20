@@ -10,33 +10,11 @@ const Vendor = () => {
   };
   return (
     <DashboardLayout>
-      <header className="mb-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Vendor List</h1>
-        <button
-          className="bg-blue-500 text-white px-4 py-2 rounded-md"
-          onClick={toggleForm}
-        >
-          Add Vendor
-        </button>
-      </header>
-
-      <section className="bg-white p-6 rounded-lg shadow-lg">
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border">
-            <thead className="bg-gray-200">
-              <tr>
-                <th className="py-2 px-4 border">Vendor Name</th>
-                <th className="py-2 px-4 border">Contact</th>
-                <th className="py-2 px-4 border">Email</th>
-                <th className="py-2 px-4 border">Actions</th>
-              </tr>
-            </thead>
-            <tbody id="vendor-list"></tbody>
-          </table>
-        </div>
-      </section>
-      {isOpen && <Form toggleForm={toggleForm} />}
-    </DashboardLayout>
+    <div className="relative h-full bg-white rounded-md shadow-md">
+      <Add toggleForm={toggleForm} />
+    </div>
+    {isOpen && <Form toggleForm={toggleForm} />}
+  </DashboardLayout>
   );
 };
 

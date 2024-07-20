@@ -1,6 +1,9 @@
 import { useState } from "react";
-import DashboardLayout from "../layouts/DashboardLayout";
+
+import AddButtonComponent from "../components/common/AddButtonComponent";
 import Form from "../components/vendor/Form";
+import DashboardLayout from "../layouts/DashboardLayout";
+import Card from "../components/stock/Card";
 
 const Stock = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,33 +11,26 @@ const Stock = () => {
   const toggleForm = () => {
     setIsOpen(!isOpen);
   };
+
+  const cards = Array.from({ length: 10 }, (_, index) => ({
+    title: `Card Title ${index + 1}`,
+    description: `This is the description for card ${index + 1}.`,
+  }));
   return (
     <DashboardLayout>
-      <header className="mb-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Stock List</h1>
-        <button
-          className="bg-blue-500 text-white px-4 py-2 rounded-md"
-          onClick={toggleForm}
-        >
-          Add Stock
-        </button>
-      </header>
+      <ul className="h-full space-y-2 mb-10">
+        {cards.map((card, index) => (
+          <li>
+            <Card
+              key={index}
+              title={card.title}
+              description={card.description}
+            />
+          </li>
+        ))}
+      </ul>
+      <AddButtonComponent toggleForm={toggleForm} />
 
-      <section className="bg-white p-6 rounded-lg shadow-lg">
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border">
-            <thead className="bg-gray-200">
-              <tr>
-                <th className="py-2 px-4 border">Stock Name</th>
-                <th className="py-2 px-4 border">Contact</th>
-                <th className="py-2 px-4 border">Email</th>
-                <th className="py-2 px-4 border">Actions</th>
-              </tr>
-            </thead>
-            <tbody id="Stock-list"></tbody>
-          </table>
-        </div>
-      </section>
       {isOpen && <Form toggleForm={toggleForm} />}
     </DashboardLayout>
   );

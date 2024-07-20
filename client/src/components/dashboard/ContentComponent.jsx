@@ -1,6 +1,6 @@
 const ContentComponent = ({ children }) => {
   return (
-    <main className="flex-1 bg-gray-100 h-full p-2">
+    <main className="bg-gray-300 h-full p-2 overflow-y-auto">
       {children}
     </main>
   );
