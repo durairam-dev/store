@@ -13,6 +13,7 @@ const Product = () => {
   };
 
   const cards = Array.from({ length: 10 }, (_, index) => ({
+    id: `${index}`,
     name: `Name ${index + 1}`,
     category: `Category ${index + 1}.`,
     price: Math.floor(Math.random() * (1000 - 100)) + 100,
@@ -21,8 +22,8 @@ const Product = () => {
   return (
     <DashboardLayout>
       <ul className="flex flex-col space-y-2">
-        {cards.map((card, index) => (
-          <li key={index}>
+        {cards.map((card) => (
+          <li key={card.id}>
             <Card card={card} />
           </li>
         ))}

@@ -4,11 +4,8 @@ import { MdDelete } from "react-icons/md";
 const Card = ({ card }) => {
   return (
     <div className="w-full bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-4">
-      <div className="flex justify-between items-center">
-        <h2 className="text-xl font-semibold text-gray-800">
-          {card.product}  
-          <span className="text-gray-600 text-sm">  ({card.vendor})</span>
-        </h2>
+      <div className="flex justify-between">
+        <h2 className="text-xl font-semibold text-gray-800">{card.name}</h2>
         <div className="flex space-x-2">
           <button className="text-blue-500 hover:text-white hover:bg-blue-500 p-1 rounded-md shadow-md">
             <BiSolidEdit className="size-6" />
@@ -18,7 +15,7 @@ const Card = ({ card }) => {
           </button>
         </div>
       </div>
-      <p className="text-gray-800 font-bold mt-1">Quantity: {card.quantity}</p>
+      <p className="mt-2 text-gray-600">{card.description}</p>
     </div>
   );
 };

@@ -13,16 +13,17 @@ const Stock = () => {
   };
 
   const cards = Array.from({ length: 10 }, (_, index) => ({
+    id: `${index}`,
     product: `Product Name ${index + 1}`,
-    vendor: `Vendor Name ${index + 1}.`,
-    qty: Math.floor(Math.random() * (1000 - 100)) + 100
+    vendor: `Vendor Name ${index + 1}`,
+    quantity: Math.floor(Math.random() * (1000 - 100)) + 100,
   }));
   return (
     <DashboardLayout>
       <ul className="flex flex-col space-y-2">
-        {cards.map((card, index) => (
-          <li key={index}>
-            <Card product={card.product} vendor={card.vendor} qty={card.qty} />
+        {cards.map((card) => (
+          <li key={card.id}>
+            <Card card={card} />
           </li>
         ))}
       </ul>

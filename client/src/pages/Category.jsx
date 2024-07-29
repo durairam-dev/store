@@ -1,7 +1,9 @@
 import { useState } from "react";
-import DashboardLayout from "../layouts/DashboardLayout";
+
+import AddButtonComponent from "../components/common/AddButtonComponent";
 import Form from "../components/vendor/Form";
-import Add from "../components/common/AddButtonComponent";
+import DashboardLayout from "../layouts/DashboardLayout";
+import Card from "../components/category/Card";
 
 const Category = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,11 +11,23 @@ const Category = () => {
   const toggleForm = () => {
     setIsOpen(!isOpen);
   };
+
+  const cards = Array.from({ length: 10 }, (_, index) => ({
+    id: `${index}`,
+    name: `Name ${index + 1}`,
+    description: `Description ${index + 1}.`,
+  }));
   return (
     <DashboardLayout>
-      <div className="relative h-full bg-white rounded-md shadow-md">
-        <Add toggleForm={toggleForm} />
-      </div>
+      <ul className="flex flex-col space-y-2">
+        {cards.map((card) => (
+          <li key={card.id}>
+            <Card card={card} />
+          </li>
+        ))}
+      </ul>
+      <AddButtonComponent toggleForm={toggleForm} />
+
       {isOpen && <Form toggleForm={toggleForm} />}
     </DashboardLayout>
   );
