@@ -6,6 +6,7 @@ import { IoIosLogOut } from "react-icons/io";
 import { FaWarehouse } from "react-icons/fa";
 import { MdOutlineCategory } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa6";
+import { SlBasket } from "react-icons/sl";
 
 import { Link } from "react-router-dom";
 import { getFirstPathFromCurrentUrl } from "../../utils/urlUtils";
@@ -49,6 +50,17 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
               >
                 <RiBillLine className="grid place-items-center mr-4" />
                 Billing
+              </Link>
+            </li>
+            <li>
+              <Link
+                className={`flex items-center w-full p-2 rounded-lg text-start text-white hover:bg-blue-500 outline-none cursor-pointer ${
+                  getFirstPathFromCurrentUrl() == "orders" && "bg-blue-500"
+                }`}
+                to="/orders"
+              >
+                <SlBasket className="grid place-items-center mr-4" />
+                Orders
               </Link>
             </li>
             <li>
